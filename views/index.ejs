@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>index</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+        }
+        
+        thead {
+            background-color: rgb(49, 126, 34);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        <%= data.message %>
+    </h1>
+    <div style="display: flex;justify-content: center;align-items: center; flex-direction: column;" id="app">
+        <h1 style="display: flex; justify-content: center;align-items: center;">Danh sách các Môn học</h1>
+        <table>
+            <thead>
+                <th>STT</th>
+                <th>Tên Môn Học</th>
+                <th>Loại Môn Học</th>
+                <th>Học Kỳ</th>
+                <th>Khoa</th>
+            </thead>
+            <tbody>
+                <% data.forEach(function(course) { %>
+                    <tr>
+                        <td>
+                            <%= course.id %>
+                        </td>
+                        <td>
+                            <%= course.name %>
+                        </td>
+                        <td>
+                            <%= course.course_type %>
+                        </td>
+                        <td>
+                            <%= course.semester %>
+                        </td>
+                        <td>
+                            <%= course.department %>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+
+        <h2>Tạo Mới</h2>
+        <form action="/save" method="post">
+            <input type="number" id="id" name="id" placeholder="ID...">
+            <br>
+            <input type="text" id="name" name="name" placeholder="Tên Môn Học...">
+            <br>
+            <input type="text" id="course_type" name="course_type" placeholder="Loại Môn Học...">
+            <br>
+            <input type="text" id="semester" name="semester" placeholder="Học Kỳ...">
+            <br>
+            <input type="text" id="department" name="department" placeholder="Khoa...">
+            <br>
+            <button type="submit">Tạo Mới</button>
+        </form>
+        <h2>Item List</h2>
+        <form action="/delete" method="GET">
+            <ul>
+                <% data.forEach(item => { %>
+                    <li>
+                        <input type="checkbox" name="checkbox" value="<%= item.id %>">
+                        <%= item.name %> -
+                            <%= item.course_type %> -
+                                <%= item.semester %> -
+                                    <%= item.department %>
+                    </li>
+                    <% }) %>
+            </ul>
+            <button type="submit">Delete Selected</button>
+        </form>
+    </div>
+</body>
+
+</html>

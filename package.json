@@ -1,0 +1,24 @@
+{
+    "name": "tutorial",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.ts",
+        "dev": "nodemon index.ts",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": {
+        "name": "That909kk",
+        "email": "mthat456@gmail.com"
+    },
+    "license": "ISC",
+    "dependencies": {
+        "aws-sdk": "^2.978.0",
+        "ejs": "^3.1.10",
+        "express": "^4.17.1",
+        "node": "^23.9.0"
+    }
+
+}
